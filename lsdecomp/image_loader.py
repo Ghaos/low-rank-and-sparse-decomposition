@@ -5,26 +5,25 @@ import numpy as np
 import os
 
 class ImageLoader:
-    #画像の読み込み
     def load(self, root, frames):
         
-        image_path = root + 'data/image0001.jpg'
+        image_path = root + '/data/image0001.jpg'
         img = Image.open(image_path)
-        img_array = np.asarray(img)
-        w, h = img.size                                  #サイズ取得
-        D = np.reshape(img_array, (1, w*h))
+        w, h = img.size
+        D = np.empty((frames, w*h))
         
-        for i in range(1,frames):
-            image_path = root + 'data/image' + format(i+1, '04d') + '.jpg'
+        for i in range(frames):
+            image_path = root + '/data/image' + format(i+1, '04d') + '.jpg'
             img = Image.open(image_path)
-            img_array = np.asarray(img)
-            D = np.vstack([D, np.reshape(img_array, (1, w*h))])
+            img_array = np.asarray(img) / 255.0
+            D[i,:] = np.reshape(img_array, (1, w*h))
             
         return w, h, D
     
-    #画像の保存
+    
     def save(self, root, filename, Data, width, height, frames): 
-        os.makedirs(root)
+        if not os.path.isdir(root):
+            os.makedirs(root)
         
         for i in range(frames):
             save_path = root + '/' + filename + format(i+1, '04d') + '.png'

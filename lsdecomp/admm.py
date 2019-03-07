@@ -87,10 +87,10 @@ class ADMM() :
                 
             ## display
             if np.mod(i, disp_iter) == 0:
-                print('iter:' + format(i, '03d')
-                        + ' normD:' + format(normD, '.5e')
-                        + ' rank(L):' + format(np.linalg.matrix_rank(L), '03d')
-                        + ' nonzero(S):' + format(np.count_nonzero(S), 'd'))
+                print('iter:' + format(i+1, '03d')
+                        + '  normD:' + format(normD, '.5e')
+                        + '  rank(L):' + format(np.linalg.matrix_rank(L), '03d')
+                        + '  nonzero(S):' + format(np.count_nonzero(S), 'd'))
                 
             if normD < tol:
                 break;
