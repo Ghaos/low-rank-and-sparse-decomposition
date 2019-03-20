@@ -19,7 +19,7 @@
 
 →参照: [https://en.wikipedia.org/wiki/Foreground_detection](https://en.wikipedia.org/wiki/Foreground_detection)
 
-![](https://lh3.googleusercontent.com/0yEoZLE9NEQwvims20jefglr35GcNJlW9EoJ9P7Npb-hlWS5CouqOqITDNYQ8jH-CIOILGPkneM "LSdecomp")
+![](https://lh3.googleusercontent.com/0yEoZLE9NEQwvims20jefglr35GcNJlW9EoJ9P7Npb-hlWS5CouqOqITDNYQ8jH-CIOILGPkneM "LSdecomp")<br/>
 *前景検出の例。上図では、道路を横切るトラックが前景として検出されている。*
 
 ### Total Variation の導入
@@ -32,7 +32,7 @@
 
 直観的には、変化が大きいデータほどTotal Variationも大きくなり、全体が均一に近いデータほどTotal Variationは小さくなる。
 
-![](https://lh3.googleusercontent.com/MffyhcMCQGrzYOK2gFa-Qhq5ZbvBO8rKxreI6W-YAYKN_Jp8NV01fZ_AdNWxfbfN8sDGeGkvuco "TotalVariation")
+![](https://lh3.googleusercontent.com/MffyhcMCQGrzYOK2gFa-Qhq5ZbvBO8rKxreI6W-YAYKN_Jp8NV01fZ_AdNWxfbfN8sDGeGkvuco "TotalVariation")<br/>
 *左図のようにノイズが多いフレームはTotal Variationは大きくなり、右図では小さくなる。*
 
 
@@ -46,7 +46,7 @@ Total Variationは、各ピクセルと（垂直・水平・時間の3方向に�
 
 という問題点があった。
 
-![](https://lh3.googleusercontent.com/CR_LtI9Lo4FYwciaCEyMrnlQr_pQqmY8eVa352VLZo6dcfMwyZrQhu9WATP672tHDeBvrdIvEqE "Edges")
+![](https://lh3.googleusercontent.com/CR_LtI9Lo4FYwciaCEyMrnlQr_pQqmY8eVa352VLZo6dcfMwyZrQhu9WATP672tHDeBvrdIvEqE "Edges")<br/>
 *従来手法では、各フレームの最初と最後の列（図中赤矢印）、最初と最後の行（図中青矢印）、最初と最後のフレーム（図中緑で示したフレーム）をそれぞれ「隣り合う」ものとして計算していた。*
 
 この問題は、行列の計算において循環的な操作が必要だったために生じていた。
@@ -58,13 +58,13 @@ Total Variationは、各ピクセルと（垂直・水平・時間の3方向に�
 ### データセット
 次の2種類のデータセットに対して実験を行った。
  - 自作データセット
- -- 黒背景に白い丸が移動するようなデータ（＋ノイズ）を作成
- -- 解像度(160,120)
- -- 180フレーム
+	- 黒背景に白い丸が移動するようなデータ（＋ノイズ）を作成
+	- 解像度(160,120)
+	 - 180フレーム
  - LIMU Datasets（[http://limu.ait.kyushu-u.ac.jp/dataset/en/index.html](http://limu.ait.kyushu-u.ac.jp/dataset/en/index.html)） - Bus Stop in the Morning
- -- バス停を人や車が移動する映像
- -- 解像度(160,120)にトリミングして使用
- -- 180フレーム（フレーム1655～1834）
+	 - バス停を人や車が移動する映像
+	 - 解像度(160,120)にトリミングして使用
+	 - 180フレーム（フレーム1655～1834）
 
 ### マスクの生成
 出力結果は、各ピクセルが連続数で表されるグレースケール画像となる。
@@ -91,7 +91,7 @@ F値は、正解データに対して相対的に計算され、完全に一致�
 
 これは、1フレーム目が最終フレームに影響を受けたことが原因だと考えられる。
 
-![](https://lh3.googleusercontent.com/_ObOo64weF84uP0ClY91ef3tLfMMsthm619M_RlUUvZJFyFlK6PeFPngAXzhUGBhb7zhMX2_85U "result1")
+![](https://lh3.googleusercontent.com/_ObOo64weF84uP0ClY91ef3tLfMMsthm619M_RlUUvZJFyFlK6PeFPngAXzhUGBhb7zhMX2_85U "result1")<br/>
 *合成データに対する実験結果。1行目が提案手法、2行目が既存手法、3行目が正解データ(Ground Truth)に相当する。F値は、より良かったものを赤字で強調した。*
 
 <br/>
@@ -100,7 +100,7 @@ F値は、正解データに対して相対的に計算され、完全に一致�
 
 こちらも、特に1フレーム目でF値の改善が見られた。
 
-![](https://lh3.googleusercontent.com/7D-Lmft8JrwY4iRxfjM5dLDwa7V0W8MUWshsCx8b0H-8xTd9-KvE4us3jFKugbP0uWyE5-i3O9Y "result2")
+![](https://lh3.googleusercontent.com/7D-Lmft8JrwY4iRxfjM5dLDwa7V0W8MUWshsCx8b0H-8xTd9-KvE4us3jFKugbP0uWyE5-i3O9Y "result2")<br/>
 *実データに対する実験結果。1行目が提案手法、2行目が既存手法、3行目が正解データ(Ground Truth)に相当する。F値は、より良かったものを赤字で強調した。*
 
 
